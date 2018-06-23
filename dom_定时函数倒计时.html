@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0px;
+        }
+        #container{
+            width : 150px;
+            height : 100px;
+            background: #aaa;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            margin-left: -75px;
+            margin-top: -50px;
+            text-align: center;
+        }
+
+        #time{
+            height : 40px;
+            line-height: 40px;
+        }
+        #btn{
+            margin-top: 10px;
+            height: 30px;
+            width: 50px;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <h1 id="time">100</h1>
+        <button id="btn">开始</button>
+    </div>
+    <script>
+        var obtn = document.getElementById("btn");
+        var oH1 = document.getElementsByTagName("h1")[0];
+        var key = 1;
+        var timer;
+        obtn.onclick= function(){
+            if(oH1.innerHTML !=0){
+                key *= -1;
+                if(key == -1){
+                    obtn.innerHTML = "开始";
+                    timer=setInterval(function(){
+                        oH1.innerHTML--;
+
+                    },1000);
+                }else if(key == 1){
+                    obtn.innerHTML = "暂停";
+                    clearInterval(timer);
+                }
+            }else{
+                alert("倒计时结束");
+            }
+
+
+
+        }
+
+
+    </script>
+</body>
+</html>

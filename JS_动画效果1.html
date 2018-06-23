@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .banner{
+            width: 200px;
+            height: 60px;
+            background: red;
+            margin: 30px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="banner" id="a">
+
+    </div>
+    <div class="banner" id="b">
+
+    </div>
+    <div class="banner" id="c">
+
+    </div>
+    <script>
+        var oBanner = document.getElementsByClassName("banner");
+        var oBannerWidth;
+        var ex1=[];
+        var sh1=[];
+        for(var i=0;i<oBanner.length;i++){
+            oBanner[i].index = i;
+            oBanner[i].onmouseover = function(){
+                clearInterval(sh1[this.index]);
+                ex1[this.index] = setInterval(extend,50);
+                var th_index = this.index;
+                function extend() {
+                    oBannerWidth = oBanner[th_index].offsetWidth;
+                    if(oBannerWidth >= 600)
+                        clearInterval(ex1[th_index]);
+                    else{
+                        oBanner[th_index].style.width = oBannerWidth + 10 +"px";
+                    }
+                }
+
+            }
+            oBanner[i].onmouseout = function(){
+                clearInterval(ex1[this.index]);
+                sh1[this.index] = setInterval(shorten,50);
+                var th_index = this.index;
+                function shorten() {
+                    oBannerWidth = oBanner[th_index].offsetWidth;
+                    if(oBannerWidth <= 200)
+                        clearInterval(sh1[th_index]);
+                    else{
+                        oBanner[th_index].style.width = oBannerWidth - 10 +"px";
+                    }
+                }
+
+            }
+        }
+
+    </script>
+</body>
+</html>

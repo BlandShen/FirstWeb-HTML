@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+        body{
+            background-color: black;
+        }
+        .clearfix::after{
+            content: none;
+            display: block;
+            clear: both;
+        }
+        .container{
+            width: 400px;
+            height: 150px;
+            border:5px solid #fff;
+            border-radius: 6px;
+            position: relative;
+            margin: 0 auto;
+            overflow: hidden;
+        }
+        .content ul{
+            width: 2800px;
+            height: 150px;
+            position: absolute;
+        }
+        .content ul li{
+            float: left;
+        }
+        .content img{
+            width: 400px;
+            height: 150px;
+        }
+        .btn{
+            position: absolute;
+            z-index: 10;
+            bottom: 10px;
+        }
+        .btn-l{
+            left: 10px;
+        }
+        .btn-r{
+            right: 10px;
+        }
+        .btn li{
+            float: left;
+            width: 20px;
+            height: 20px;
+            margin: 5px;
+            border-radius: 50%;
+            background-color: yellow;
+            text-align: center;
+            line-height: 20px;
+            font-size: 12px;
+        }
+        .btn .active{
+            background-color: orange;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="content">
+            <ul class="c-img clearfix">
+                <li><img src="image/05.jpg"></li>
+                <li><img src="image/01.jpg"></li>
+                <li><img src="image/02.jpg"></li>
+                <li><img src="image/03.jpg"></li>
+                <li><img src="image/04.jpg"></li>
+                <li><img src="image/05.jpg"></li>
+                <li><img src="image/01.jpg"></li>
+            </ul>
+        </div>
+        <div class="btn btn-l">
+            <ul>
+                <li>&lt</li>
+                <li>&gt</li>
+            </ul>
+        </div>
+        <div class="btn btn-r">
+            <ul>
+                <li class="active">1</li>
+                <li>2</li>
+                <li>3</li>
+                <li>4</li>
+                <li>5</li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        var oBox = document.getElementsByClassName("content")[0];
+        var oImg = document.getElementsByClassName("c-img")[0];
+        var aBtnL = document.getElementsByClassName("btn-l")[0].getElementsByTagName("li");
+        var aBtnR = document.getElementsByClassName("btn-r")[0].getElementsByTagName("li");
+        var globalIndex = 1;
+        var timer;
+        var isTimer = true;
+        var isRun = true;
+        oImg.style.left = -400 +"px";
+        //点击数字按钮，切换图片
+        for(var i=0; i<aBtnR.length;i++){
+            aBtnR[i].index = i+1;
+            aBtnR[i].onclick =function () {
+                if(isRun){
+                    changeImg(this.index);
+                }
+            }
+        }
+        //向左移动按钮
+        aBtnL[0].onclick = function(){
+            if(isRun){
+                changeImg(globalIndex -1);
+            }
+        }
+        //向右移动按钮
+        aBtnL[1].onclick = function(){
+            if(isRun){
+                changeImg(globalIndex +1);
+            }
+        }
+        //鼠标移入停止定时动画
+        oBox.onmouseover = function () {
+            isTimer = false;
+        }
+        //鼠标移出开始定时动画
+        oBox.onmouseout = function () {
+            isTimer = true;
+        }
+        //定时改变图片动画
+        setInterval(function(){
+            if(isTimer && isRun){
+                changeImg(globalIndex+1);
+            }
+
+        },2000);
+        //改变图片
+        function changeImg(index){
+            isRun = false;
+            var direction;
+            if(index>globalIndex)
+                direction = -1 ;
+            else if(index<globalIndex)
+                direction = 1;
+            //判断边界
+            /*if(oImg.offsetLeft == 0)
+                oImg.style.left = -2000 +"px";
+            else if(oImg.offsetLeft == -2400)
+                oImg.style.left = -400 +"px";*/
+            if(index == 6){
+                index = 1;
+                /*direction = 1;*/
+            }else if(index == 0){
+                index = 5;
+                /*direction = -1;*/
+            }
+
+            globalIndex = index;
+            timer = setInterval(function () {
+                oImg.style.left = oImg.offsetLeft + direction*20 +"px";
+                if(index*-400 == oImg.offsetLeft){
+                    clearInterval(timer);
+                    isRun = true;
+                }else if(oImg.offsetLeft == -2400){
+                    oImg.style.left = -400 +"px";
+                    clearInterval(timer);
+                    isRun = true;
+                }else if(oImg.offsetLeft == 0){
+                    oImg.style.left = -2000 +"px";
+                    clearInterval(timer);
+                    isRun = true;
+                }
+
+            },50)
+
+            //按钮选中状态
+            for(var i=0;i<aBtnR.length;i++){
+                aBtnR[i].className = "";
+            }
+            aBtnR[globalIndex-1].className = "active";
+            console.log(globalIndex);
+        }
+
+    </script>
+</body>
+</html>

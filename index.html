@@ -1,10 +1,53 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+    <title></title>
+    <meta charset="utf-8">
+    <style type="text/css">
+
+    </style>
 </head>
 <body>
-    <p>hello world</p>
+<div class="waiceng">
+    aaa
+    <div class="liceng">
+        fff
+    </div>
+</div>
+<div class="waiceng">
+    bbb
+</div>
+<div class="waiceng">
+    ccc
+</div>
+<script type="text/javascript">
+    function getClass(cName,obj){
+        if(document.getElementsByClassName){#判断浏览器是否有getElementsByClassName方法（兼容性问题）
+            return obj.getElementsByClassName(cName);
+        }else{
+            var thisObj=obj||document;
+            var allTag=thisObj.getElementsByTagName("*");
+            var thisArr=[];
+            for(var i=0;i<allTag.length;i++)
+            {
+                if(judge(allTag[i].className,cName)){
+                    thisArr.push(allTag[i]);
+                }
+            }
+            console.log(thisArr);
+        }
+
+    }
+    function judge(allClassName,str){
+        allClassName=allClassName.split(" ");
+        for(var i=0;i<allClassName.length;i++)
+            if(allClassName[i]==str){
+                return true;
+            }
+
+    }
+    var oDiv = document.getElementsByClassName("waiceng")[0]
+    getClass("liceng",oDiv);
+</script>
 </body>
 </html>

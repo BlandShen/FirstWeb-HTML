@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        /*div{
+            border:1px solid #000;
+        }*/
+        ul{
+            list-style: none;
+
+        }
+        li{
+            height: 100px;
+            width: 149px;
+            float: left;
+            border-right:1px solid #000;
+            /*border:1px solid #000;*/
+        }
+        ul li:last-child{
+            border-right:0 solid #fff;
+        }
+        #container{
+            height: 400px;
+            width: 600px;
+            margin: 0 auto;
+            text-align: center;
+            border:1px solid #000;
+
+        }
+        #show{
+            position: relative;
+            height: 290px;
+            width: 600px;
+        }
+        #btnLeft{
+            height:40px;
+            width: 30px;
+            position: absolute;
+            top: 50%;
+            left:0;
+            margin-top: -15px;
+        }
+        #btnRight{
+            height:40px;
+            width: 30px;
+            position: absolute;
+            top: 50%;
+            right: 0;
+            margin-top: -15px;
+        }
+        .bottom-image{
+            border-top:1px solid #000;
+            margin-top: 10px;
+            /*border:1px solid #000;*/
+        }
+        .show2{
+            display: none;
+        }
+        #show .now{
+            display: block;
+        }
+        .pt{
+            margin-top:10px;
+            height: 80px;
+            width: 140px;
+
+        }
+        .pt2{
+            height: 280px;
+            width: 440px;
+        }
+        .clearfix::after{
+            content:"";
+            clear: both;
+            display: block;
+
+        }
+
+    </style>
+</head>
+<body>
+    <div id="container">
+        <div id="show" >
+            <div class="clearfix">
+                <button id="btnLeft" >&lt;</button>
+                <button id="btnRight" >&gt;</button>
+            </div>
+
+            <div>
+                <div class="show2"><img class="pt2" src="image/1.jpg"/></div>
+                <div class="show2"><img class="pt2" src="image/2.jpg"/></div>
+                <div class="show2"><img class="pt2" src="image/3.jpg"/></div>
+                <div class="show2"><img class="pt2" src="image/4.jpg"/></div>
+            </div>
+
+        </div>
+        <div class="bottom-image">
+            <ul class="clearfix">
+
+                <li><img class="pt" src="image/1.jpg"/></li>
+                <li><img class="pt" src="image/2.jpg"/></li>
+                <li><img class="pt" src="image/3.jpg"/></li>
+                <li><img class="pt" src="image/4.jpg"/></li>
+
+            </ul>
+        </div>
+    </div>
+    <script>
+        var oDiv=document.getElementsByClassName("show2");
+        var oLi=document.getElementsByTagName("li");
+        var oBtnLeft=document.getElementById("btnLeft");
+        var oBtnRight=document.getElementById("btnRight");
+        for(var i=0;i<oLi.length;i++){
+            oLi[i].index=i;
+            oLi[i].onmouseover = function () {
+                for(var j=0;j<oLi.length;j++){
+                    oDiv[j].className="show2";
+                }
+                oDiv[this.index].classList.add("now");
+            }
+        }
+        var index=0;
+        oBtnLeft.onclick=function () {
+            index--;
+            change(index);
+        }
+        oBtnRight.onclick=function () {
+            index++;
+            change(index);
+        }
+        function change(index1){
+           if(index1 ==4)
+               index=0;
+           if(index1 ==-1)
+               index=3;
+            for(var j=0;j<oLi.length;j++){
+                oDiv[j].className="show2";
+            }
+            oDiv[index].classList.add("now");
+        }
+    </script>
+</body>
+</html>
