@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <span id="num">
+        
+    </span>
+    <button id="btn">按钮</button>
+    <script>
+        var obj ={}
+        var obtn = document.getElementById("btn");
+        var num = document.getElementById("num");
+        obtn.onclick = function () {
+            var arr =[];
+            for(var i=0;i<5;i++){
+                arr.push(Math.ceil(10*Math.random()))
+            }
+            num.innerText = arr;
+            var rad =Math.random();
+            location.hash = rad;
+            obj[location.hash] =arr;
+        }
+        window.onhashchange = function () {
+            console.log(obj[location.hash]);
+        }
+    </script>
+</body>
+</html>

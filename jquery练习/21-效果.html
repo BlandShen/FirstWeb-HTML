@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .box{
+            width: 100px;
+            height: 100px;
+            background: red;
+        }
+        .dn{
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+    <button id="show">显示</button>
+    <button id="hide">隐藏</button>
+    <button id="togg">切换</button>
+    <div class="box"></div>
+    <script src="jquery-3.3.1.min.js"></script>
+    <script>
+        $("#show").on("click",function () {
+            $(".box").show();
+        })
+        $("#hide").on("click",function () {
+            $(".box").hide();
+        })
+        $("#togg").on("click",function () {
+            $(".box").toggle();
+        })
+    </script>
+</body>
+</html>

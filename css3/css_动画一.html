@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        html,body,.container{
+            height:100%;
+        }
+        .container{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 0;
+        }
+        .p1 img{
+            width: 400px;
+            height: 200px;
+        }
+        .p2 img{
+            width:400px;
+            height:200px;
+        }
+        .p1{
+            border: 3px solid #f2f2f2;
+            z-index: 0;
+            box-shadow: 2px 2px 25px rgba(0,0,0,.4);
+            transform: rotate(-20deg);
+            transition: transform 4s ease;
+            position: absolute;
+        }
+        .p2{
+            border: 3px solid #f2f2f2;
+            z-index: 1;
+            box-shadow: 2px 2px 15px rgba(0,0,0,.4);
+            transform: rotate(25deg);
+            transition: transform 4s ease;
+            position: absolute;
+        }
+        .p1:hover{
+            transform: rotate(0deg) scale(1.2);
+            z-index: 11;
+            box-shadow: 5px 5px 20px rgba(0,0,0,.4);
+        }
+        .p2:hover{
+            transform: rotate(0deg) scale(1.2);
+
+            box-shadow: 5px 5px 30px rgba(0,0,0,.4);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="p1">
+            <img src="../image/6.jpg">
+        </div>
+        <div class="p2">
+            <img src="../image/6.jpg">
+        </div>
+    </div>
+</body>
+</html>

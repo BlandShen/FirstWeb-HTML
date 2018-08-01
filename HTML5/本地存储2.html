@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <script>
+        //本地存储
+        localStorage.setItem("name","xiaohong");
+        localStorage.age="20";
+        console.log(localStorage.getItem("name"));
+        console.log(localStorage.age);
+        localStorage.removeItem("name");
+        localStorage.clear();
+        //会话存储，关闭窗口丢失
+        sessionStorage.setItem("name","zhangsan");
+    </script>
+</body>
+</html>

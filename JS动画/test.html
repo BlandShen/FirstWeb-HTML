@@ -70,28 +70,37 @@
     var oPrev = document.getElementById("prev");
     var oNext = document.getElementById("next");
     var dirction = -10;
-
+    var timer;
     oUl.innerHTML+=oUl.innerHTML;
     oUl.style.width = oUl.offsetWidth*2+"px";
+    setInterval(function(){
+        change();
+    },2000);
+    function change(){
 
-    setInterval(function () {
+        timer=setInterval(function () {
+            console.log("aaa");
+            oUl.style.left = oUl.offsetLeft +dirction + "px";
+            if(oUl.offsetLeft <= -oUl.offsetWidth/2){
+                oUl.style.left = 0;
+            }
+            if(oUl.offsetLeft > 0){
+                oUl.style.left = -oUl.offsetWidth/2+"px";
+            }
+            if(oUl.offsetLeft%110 == 0){
+                clearInterval(timer);
+            }
+        },50);
 
-        oUl.style.left = oUl.offsetLeft +dirction + "px";
-        if(oUl.offsetLeft <= -oUl.offsetWidth/2){
-            oUl.style.left = 0;
+        oPrev.onclick = function () {
+            dirction = -10;
         }
-        if(oUl.offsetLeft > 0){
-            oUl.style.left = -oUl.offsetWidth/2+"px";
-        }
-    },50);
 
-    oPrev.onclick = function () {
-        dirction = -10;
+        oNext.onclick = function () {
+            dirction = 10;
+        }
     }
 
-    oNext.onclick = function () {
-        dirction = 10;
-    }
 
 
 

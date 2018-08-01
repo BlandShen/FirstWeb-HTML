@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div id="box1">
+        <div id="box2"></div>
+        <div id="box3"></div>
+        <span id="span1"></span>
+    </div>
+    <script>
+        var oBox1 = document.getElementById("box1")
+        var oBox3 = document.getElementById("box3")
+        var oBox2 = document.getElementById("box2")
+        /*for(var i=0; i<oBox1.childNodes.length;i++){
+            if(oBox1.childNodes.item(i).nodeType == 1)
+                console.log(oBox1.childNodes.item(i));
+        }
+        console.log(oBox3.previousElementSibling);//找前一个元素
+        console.log(oBox3.previousSibling);//找前一个节点
+        console.log(oBox3.parentElement);//找父元素
+        console.log(oBox1.lastElementChild);//找最后一个字元素*/
+
+        //注意节点包括元素，还有字符文本等等
+
+        //IE兼容性问题：nextElementSibling只能返回节点，而不是下一个元素节点
+        //封装一个用nextSibing返回下一个元素的方法
+        function next(obj) {
+            var oTemp;
+            oTemp = obj;
+            do{
+                oTemp = oTemp.nextSibling;
+            }while(oTemp && oTemp.nodeType != 1){
+                return oTemp;
+            }
+        }
+        console.log(next(oBox2));
+
+
+    </script>
+</body>
+</html>

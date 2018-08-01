@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+        }
+        .header,.footer{
+            height: 50px;
+            background-color: #aaaaaa;
+            width: 100%;
+            text-align: center;
+        }
+        .content{
+            height: 170px;
+            min-width: 500px;
+            display: flex;
+            text-align: center;
+        }
+        .content-left{
+            order:0;
+            background-color: red;
+            width: 200px;
+        }
+        .content-right{
+            order:2;
+            background-color: green;
+            width: 200px;
+        }
+        .content-center{
+            order:1;
+            background-color: blue;
+            flex-grow: 1;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="header">header</div>
+        <div class="content">
+            <div class="content-center">center</div>
+            <div class="content-left">left</div>
+            <div class="content-right">right</div>
+        </div>
+        <div class="footer">footer</div>
+    </div>
+    <script>
+
+    </script>
+</body>
+</html>

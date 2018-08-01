@@ -70,13 +70,13 @@
     <div class="container">
         <div class="content">
             <ul class="c-img clearfix">
-                <li><img src="image/05.jpg"></li>
-                <li><img src="image/01.jpg"></li>
-                <li><img src="image/02.jpg"></li>
-                <li><img src="image/03.jpg"></li>
-                <li><img src="image/04.jpg"></li>
-                <li><img src="image/05.jpg"></li>
-                <li><img src="image/01.jpg"></li>
+                <li><img src="../image/05.jpg"></li>
+                <li><img src="../image/01.jpg"></li>
+                <li><img src="../image/02.jpg"></li>
+                <li><img src="../image/03.jpg"></li>
+                <li><img src="../image/04.jpg"></li>
+                <li><img src="../image/05.jpg"></li>
+                <li><img src="../image/01.jpg"></li>
             </ul>
         </div>
         <div class="btn btn-l">
@@ -151,10 +151,6 @@
             else if(index<globalIndex)
                 direction = 1;
             //判断边界
-            /*if(oImg.offsetLeft == 0)
-                oImg.style.left = -2000 +"px";
-            else if(oImg.offsetLeft == -2400)
-                oImg.style.left = -400 +"px";*/
             if(index == 6){
                 index = 1;
                 /*direction = 1;*/
@@ -169,7 +165,8 @@
                 if(index*-400 == oImg.offsetLeft){
                     clearInterval(timer);
                     isRun = true;
-                }else if(oImg.offsetLeft == -2400){
+                }
+                if(oImg.offsetLeft == -2400){
                     oImg.style.left = -400 +"px";
                     clearInterval(timer);
                     isRun = true;

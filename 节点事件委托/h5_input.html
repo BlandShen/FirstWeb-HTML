@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        table{
+            border-width: 1px;
+            border-style: solid;
+            border-color: #000;
+        }
+    </style>
+</head>
+<body>
+    <input type="text" id="content">
+    <input type="date" id="time">
+    <button class="add">添加</button>
+    <table class="tb1">
+        <tr>
+            <th>序号</th>
+            <th>内容</th>
+            <th>时间</th>
+            <th>操作</th>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td>上课</td>
+            <td>2017-1-1</td>
+            <td><button id="del1">删除</button></td>
+        </tr>
+    </table>
+    <script>
+        var oTable = document.getElementsByClassName("tb1")[0];
+        var oAdd = document.getElementsByClassName("add")[0];
+        var oText = document.getElementById("content");
+        var oDate = document.getElementById("time");
+        var trId = 2;
+        oAdd.onclick =function () {
+            /*var trId = oTable.getElementsByTagName("tr").length;*/
+            var innerText = oText.value;
+            var innerDate = oDate.value;
+            var oTr =document.createElement("tr");
+            oTr.innerHTML ="<td>"+trId+"</td>"+"<td>"+innerText+"</td>"+"<td>"+innerDate+"</td>"+"<td>"+"<button id='del"+trId+"'>删除</button>"+"</td>";
+            oTable.appendChild(oTr);
+            trId++;
+        }
+        oTable.onclick =function (e) {
+            e.target.parentElement.parentElement.remove();
+        }
+    </script>
+</body>
+</html>

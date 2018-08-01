@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+        }
+        .header,.footer{
+            height: 50px;
+            background-color: #aaaaaa;
+            width: 100%;
+            text-align: center;
+            line-height: 50px;
+        }
+        .content{
+            height: 170px;
+            min-width: 500px;
+            text-align: center;
+            position: relative;
+            padding: 0 200px;
+        }
+        .content-left{
+            background-color: red;
+            width: 200px;
+            height: 170px;
+            float: left;
+            position: relative;
+            margin-left:-100%;
+            left: -200px;
+        }
+        .content-right{
+            background-color: green;
+            width: 200px;
+            height: 170px;
+            float: left;
+            position: relative;
+            margin-left: -200px;
+            right: -200px;
+        }
+        .content-center{
+            float: left;
+            position: relative;
+            height: 170px;
+            width: 100%;
+            background-color: blue;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <div class="header">head</div>
+        <div class="content clearfix">
+            <div class="content-center">center</div>
+            <div class="content-left">left</div>
+            <div class="content-right">right</div>
+        </div>
+        <div class="footer">foot</div>
+    </div>
+    <script>
+
+    </script>
+</body>
+</html>

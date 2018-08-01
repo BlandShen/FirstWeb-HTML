@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        /**{*/
+            /*margin: 0;*/
+            /*padding: 0;*/
+        /*}*/
+        .container{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .head,.nav,.foot{
+            margin-bottom: 10px;
+            width: 100%;
+            max-width: 960px;
+            height: 80px;
+            background-color: #444;
+            line-height: 80px;
+            text-align: center;
+        }
+        .pic{
+            background-image: url("../image/6.jpg");
+            width: 100%;
+            max-width: 960px;
+            padding-top: 60%;
+            background-repeat: no-repeat;
+            /*background-position: center;*/
+            background-size: 100%;
+        }
+
+        .content{
+            display: flex;
+            max-width: 960px;
+            flex-direction: row;
+            justify-content: space-between;
+        }
+        .content1{
+            width: 60%;
+            height: 300px;
+            text-align: center;
+            background-color:cornflowerblue ;
+            overflow: hidden;
+        }
+        .content2{
+            width: 30%;
+            height: 300px;
+            text-align: center;
+            background-color: mediumspringgreen;
+            overflow: hidden;
+        }
+        @media (max-width: 730px){
+            .container .content{
+                display: flex;
+                flex-direction: column;
+            }
+            .content .content1{
+                overflow: hidden;
+                text-align: center;
+                width: 100%;
+                height: 300px;
+                background-color:cornflowerblue ;
+            }
+            .content .content2{
+                overflow: hidden;
+                text-align: center;
+                width: 100%;
+                height: 300px;
+                background-color: mediumspringgreen;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="head">页头</div>
+        <div class="nav">导航</div>
+        <div class="pic"></div>
+        <div class="content">
+            <div class="content1">　父亲说，“事已如此，不必难过，好在天无绝人之路！”回家变卖典质，父亲还了亏空；又借钱办了丧事。这些日子，家中光景很是惨淡，一半为了丧事，一半为了父亲赋闲。丧事完毕，父亲要到南京谋事，我也要回北京念书，我们便同行。到南京时，有朋友约去游逛，勾留了一日；第二日上午便须渡江到浦口，下午上车北去。父亲因为事忙，本已说定不送我，叫旅馆里一个熟识的茶房陪我同去。他再三嘱咐茶房，甚是仔细。但他终于不放心，怕茶房不妥帖；颇踌躇了一会。其实我那年已二十岁，北京已来往过两三次，是没有甚么要紧的了。他踌躇了一会，终于决定还是自己送我去。我两三回劝他不必去；他只说，“不要紧，他们去不好！” 我们过了江，进了车站。</div>
+            <div class="content2"> 可是他穿过铁道，要爬上那边月台，就不容易了。他用两手攀着上面，两脚再向上缩；他肥胖的身子向左微倾，显出努力的样子。这时我看见他的背影，我的泪很快地流下来了。我赶紧拭干了泪，怕他看见，也怕别人看见。我再向外看时，他已抱了朱红的橘子望回走了。过铁道时，他先将橘子散放在地上，自己慢慢爬下，再抱起橘子走。到这边时，我赶紧去搀他。他和我走到车上，将橘子一股脑儿放在我的皮大衣上。于是扑扑衣上的泥土，心里很轻松似的，过一会说，“我走了；到那边来信！”我望着他走出去。他走了几步，回过头看见我，说，“进去吧，里边没人。”等他的背影混入来来往往的人里，再找不着了，我便进来坐下，我的眼泪又来了。 近几年来，父亲和我都是东奔西走，家中光景是一日不如一日。他少年出外谋生，独力支持，做了许多大事。那知老境却如此颓唐！他触目伤怀，自然情不能自已。情郁于中，自然要发之于外；家庭琐屑便往往触他之怒。他待我渐渐不同往日。但最近两年的不见，他终于忘却我的不好，只是惦记着我，惦记着我的儿子。我北来后，他写了一信给我，信中说道，“我身体平安，惟膀子疼痛利害，举箸提笔，诸多不便，大约大去之期不远矣。” </div>
+        </div>
+        <div class="foot">页脚</div>
+    </div>
+
+    <script>
+
+    </script>
+</body>
+</html>

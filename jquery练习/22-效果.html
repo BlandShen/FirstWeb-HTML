@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .box{
+            width: 200px;
+            height: 200px;
+            background-color: red;
+        }
+    </style>
+</head>
+<body>
+
+    <button id="fadein">fadein</button>
+    <button id="fadeout">fadeout</button>
+    <button id="fadeto">fadeto</button>
+    <button id="fadetoggle">fadetoggle</button>
+    <button id="slidedown">slidedown</button>
+    <button id="slideup">slideup</button>
+    <button id="slidetoggle">slidetogggle</button>
+    <button id="animate">animate</button>
+    <div class="box"></div>
+    <script src="jquery-3.3.1.min.js"></script>
+    <script>
+        $("#fadein").on("click",function () {
+            $(".box").fadeIn();
+        });
+        $("#fadeout").on("click",function () {
+            $(".box").fadeOut();
+        });
+        $("#fadeto").on("click",function () {
+            $(".box").fadeTo("slow",0.3)
+        })
+        $("#fadetoggle").on("click",function () {
+            $(".box").fadeToggle();
+        });
+        $("#slidedown").on("click",function () {
+            $(".box").slideDown();
+        });
+        $("#slideup").on("click",function () {
+            $(".box").slideUp();
+        });
+        $("#slidetoggle").on("click",function () {
+            $(".box").stop(false,false)
+            $(".box").slideToggle();
+        });
+        $("#animate").on("click",function () {
+            $(".box").delay(2000).animate({
+                width: 400,
+                height: 400
+            },1000,"swing",function () {
+                console.log("done");
+            })
+        });
+    </script>
+</body>
+</html>

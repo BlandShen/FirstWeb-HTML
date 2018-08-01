@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+        body{
+            background: black;
+        }
+        .clearfix:after{
+            content:"";
+            display: block;
+            clear: both;
+        }
+        .container{
+            width: 800px;
+            height: 300px;
+            border: 5px solid white ;
+            border-radius: 6px ;
+            margin: 0 auto;
+            position: relative;
+        }
+        .content div{
+            position: absolute;
+            left: 0;
+            top: 0;
+            /*display: none;*/
+        }
+        .content img{
+            width: 800px;
+            height: 300px;
+        }
+        .container .content .active{
+            /*display: block;*/
+            opacity: 1;
+            z-index: 2;
+        }
+        .btn{
+            z-index: 10;
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        .btn li{
+            float:left;
+            height: 5px;
+            width: 20px;
+            margin: 5px;
+            background-color: rgba(0,0,0,.3);
+        }
+        .container .btn .btnactive{
+            background-color: rgba(255,255,255,.8);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="content">
+            <div class="active"><img src="../image/01.jpg"></div>
+            <div><img src="../image/02.jpg"></div>
+            <div><img src="../image/03.jpg"></div>
+            <div><img src="../image/04.jpg"></div>
+            <div><img src="../image/05.jpg"></div>
+        </div>
+        <div>
+            <ul class="btn clearfix">
+                <li class="btnactive"></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+            </ul>
+        </div>
+    </div>
+    <script src="jquery-3.3.1.min.js"></script>
+    <script>
+        var index = 0;
+        var isrun =true;
+        setInterval(function () {
+            if(isrun == true){
+                ++index;
+                run();
+            }
+        },2000);
+        function run() {
+            if (index >= 5) {
+                index = 0;
+            }
+            $(".content div").eq(index).addClass("active").siblings().removeClass("active");
+            $(".btn li").eq(index).addClass("btnactive").siblings().removeClass("btnactive");
+        }
+        $(".container").hover(function () {
+            isrun = false;
+        },function () {
+            isrun = true;
+        })
+        $(".btn li").on("mouseover",function () {
+            index = $(this).index();
+            run();
+        })
+    </script>
+</body>
+</html>

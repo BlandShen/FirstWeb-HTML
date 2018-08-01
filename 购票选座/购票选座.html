@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+        body{
+            background-color: black;
+        }
+        .clearfix:after{
+            content: "";
+            display: block;
+            clear: both;
+        }
+        .container{
+            width: 550px;
+            margin: 0 auto;
+            height: 1000px;
+
+        }
+        .date{
+            background-color: white;
+            height: 60px;
+            line-height: 60px;
+            font-size: 22px;
+            color: black;
+            font-weight: bold;
+            text-indent: 10px;
+        }
+        .tb{
+            height: 60px;
+            background-color: black;
+            border-bottom: 1px solid #333;
+            line-height: 60px;
+        }
+        .tb ul li{
+            float: left;
+            font-size: 18px;
+            font-weight: bold;
+            color: white;
+        }
+        .tb ul :nth-child(odd){
+            margin-left: 40px;
+            margin-top: 20px;
+        }
+        .container .available{
+            width: 30px;
+            height: 20px;
+            background-color: white;
+        }
+        .container .chosed{
+            width: 30px;
+            height: 20px;
+            background-color: red;
+        }
+        .container .saled{
+            width: 30px;
+            height: 20px;
+            background-color: dodgerblue;
+        }
+        .content li{
+            width: 30px;
+            height: 20px;
+            background-color: white;
+        }
+        .content ul li{
+            margin-left: 5px;
+            float: left;
+        }
+        .content ul :nth-child(1){
+            margin-left: 40px;
+        }
+        .content ul :nth-child(6){
+            margin-left: 130px;
+        }
+        .content ul{
+            width: 550px;
+            margin-top: 40px;
+        }
+        .foot{
+            border-top: 1px solid #333;
+            font-size: 18px;
+            font-weight: bold;
+        }
+        .foot ul{
+            margin-top: 40px;
+        }
+        .foot ul :nth-child(1){
+            color: white;
+            float: left;
+            margin-left: 20px;
+        }
+        .foot ul :nth-child(2){
+            color: white;
+            float: right;
+        }
+        .panner-buy{
+            position: fixed;
+            margin: 0 auto;
+            bottom: 0;
+            height: 60px;
+            width: 550px;
+            font-size: 18px;
+            font-weight: bold;
+            background-color: #222;
+            color: #999;
+            line-height: 60px;
+
+        }
+        .panner-buy .sum0{
+            float: left;
+            margin-left: 20px;
+        }
+        .panner-buy .sum1{
+            float: left;
+            color:red;
+        }
+        .panner-buy .sum2{
+            margin-left: 10px;
+            float: left;
+            font-size: 14px;
+            font-weight: bold;
+        }
+        .panner-buy .btn-buy{
+            float:right;
+            width: 200px;
+            background-color:goldenrod ;
+            color: black;
+            text-align: center;
+        }
+        .zuowei{
+            width: 550px;
+        }
+        .foot .zuowei ul li{
+            margin-top: 10px;
+            margin-left: 10px;
+            float: left;
+            width: 80px;
+            height: 40px;
+            border: 1px solid goldenrod;
+            font-size: 18px;
+            font-weight: bold;
+            color: goldenrod;
+            line-height: 40px;
+            text-align: center;
+            background-color: #444;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="date">
+
+            </div>
+            <div class="tb">
+                <ul class="clearfix">
+                    <li class="available"></li>
+                    <li>可选</li>
+                    <li class="chosed"></li>
+                    <li>已选</li>
+                    <li class="saled"></li>
+                    <li>已售</li>
+                </ul>
+            </div>
+        </div>
+        <div class="content">
+
+        </div>
+        <div class="foot">
+            <ul class="clearfix">
+                <li>已选座位</li>
+                <li>最多可选择5个座位</li>
+            </ul>
+            <div class="zuowei clearfix">
+                <ul>
+                </ul>
+            </div>
+        </div>
+        <div class="panner-buy clearfix">
+            <div class="sum0">合计：</div>
+            <div class="sum1"></div>
+            <div class="sum2"></div>
+            <div class="btn-buy">确认选座</div>
+        </div>
+    </div>
+
+    <script src="jquery-3.3.1.min.js"></script>
+    <script>
+        var timer = new Date();
+        var month = timer.getMonth();
+        var date = timer.getDate();
+        var hour = timer.getHours();
+        var minute = timer.getMinutes();
+        if(hour < 10) hour = "0"+hour;
+        if(minute <10) minute ="0"+minute;
+        $(".date").text("今天"+(month+1)+"月"+date+"日"+" "+hour+":"+minute);
+        for(var i=0;i<10;i++)
+            $(".content").append("<ul class='clearfix'><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li></ul>")
+        // var inedxX;
+        // var indexY;
+        for(var i=1;i<=10;i++)
+            for(var j=0;j<10;j++){
+                var num = Math.random();
+                if(num <= 0.5)
+                    $(".content ul:nth-child("+i+") li").eq(j).addClass("saled");
+                else
+                    $(".content ul:nth-child("+i+") li").eq(j).addClass("available");
+            }
+        var count = 0;
+
+        $(".content li").on("click",function () {
+
+            if(count<=4 && $(this).hasClass("available")){
+                $(this).removeClass("available").addClass("chosed");
+            }else if($(this).hasClass("chosed")){
+                $(this).removeClass("chosed").addClass("available");
+            }
+            count = 0;
+            $(".zuowei ul").empty();
+            for(var i=1;i<=10;i++)
+                for(var j=0;j<10;j++){
+                    if($(".content ul:nth-child("+i+") li").eq(j).hasClass("chosed")){
+                        $(".zuowei ul").append("<li>"+i+"排"+(j+1)+"座"+"</li>");
+                        count++;
+                    }
+                }
+            $(".sum1").text("￥"+(count*99)+" ");
+            $(".sum2").text("￥99*"+count);
+
+
+        });
+
+
+
+
+
+    </script>
+</body>
+</html>

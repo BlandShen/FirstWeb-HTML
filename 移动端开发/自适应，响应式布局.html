@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Title</title>
+    <style>
+        div{
+            width: 50px;
+            height: 50px;
+            background-color: yellow;
+        }
+        /*媒体查询*/
+        /*!*横屏*!*/
+        /*@media(orientation: landscape){*/
+            /*.box1{*/
+                /*background-color: blue;*/
+            /*}*/
+        /*}*/
+        /*!*竖屏*!*/
+        /*@media(orientation: portrait){*/
+            /**/
+        /*}*/
+        /*!*检测dpr值为3时*!*/
+        /*@media(-webkit-device-pixel-ratio: 3){*/
+            /**/
+        /*}*/
+        @media(max-width: 1000px){
+            #box{
+                background-color: blue;
+            }
+        }
+        @media(max-width: 500px){
+            #box{
+                background-color: red;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="box">
+
+    </div>
+    <script>
+        // window.onresize = function () {
+        //     var thisWidth = document.documentElement.getBoundingClientRect().width;
+        //     if(thisWidth <1000 && thisWidth> 500){
+        //         oBox.style.backgroundColor = "blue";
+        //     }else if(thisWidth<= 500 ){
+        //         oBox.style.backgroundColor = "green";
+        //     }
+        // }
+
+    </script>
+</body>
+</html>

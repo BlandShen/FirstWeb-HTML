@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        table{
+            border: 1px solid #000;
+            width: 400px;
+            border-collapse: collapse ;
+        }
+        table th,td{
+            border: 1px solid #000;
+            width: 50%;
+            height: 30px;
+        }
+        table .title{
+            background: #abc;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <table>
+        <thead>
+            <tr>
+                <th colspan="2">
+                    点击更换内容
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td class="title">学号</td>
+                <td class="title">姓名</td>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td class="editable">张三</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td class="editable">李四</td>
+            </tr>
+        </tbody>
+    </table>
+    <script src="jquery-3.3.1.min.js"></script>
+    <script>
+        $(".editable").on("click",function () {
+            var inObj = $("<input type='text'/>")
+            inObj.val(this.innerText);
+            $(this).empty();
+            $(this).append(inObj);
+            inObj.focus();
+        });
+        $(".editable").on("focusout",function () {
+            var child = $(this).children("input");
+            $(this).text(child.val());
+        })
+        $(".editable").on("keyup",function (e) {
+            if(e.which == 13){
+                $(this).trigger("focuout");
+            }
+        })
+    </script>
+</body>
+</html>
