@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div id="box">box</div>
+    <script>
+        //   function foo(a,b){
+        //     return a+b
+        //   }
+        //  console.log(foo(1,2));
+
+          // let fun = (a,b) => a+b ;
+          // console.log(fun(2,3));
+
+          // let fun = (a,b) =>{return a+b};
+          // console.log(fun(2,3));
+
+        // var box = document.getElementById("box");
+        // box.onclick = function(){
+        //   setTimeout(()=>{
+        //     console.log(this);
+        //   },1000)
+        // }
+
+        let foo = (...arg) => {
+            console.log(arg);
+
+        };
+        foo("a","b","c");
+    </script>
+</body>
+</html>

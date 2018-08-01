@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <script>
+        let str1 = "wangyi is my friend";
+        let str2 = "wangyi";
+        let str3 = "friend";
+        String.prototype.sw=function(s2) {
+            if(this.indexOf(s2) == 0)
+                return true;
+            else return false;
+        };
+        String.prototype.ew=function(s3) {
+            if(this.indexOf(s3) == (this.length-s3.length))
+                return true;
+            else return false;
+        };
+        console.log(str1.sw(str2));
+        console.log(str1.ew(str3));
+    </script>
+</body>
+</html>

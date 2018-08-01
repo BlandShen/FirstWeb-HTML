@@ -38,4 +38,28 @@ b.includes(a)返回布尔型,b在a中存不存在
 startswith endswith  
 str.padStart(10,'xy') 前面以xy填充至十位  
 str.padEnd(10,'xy') 同理  
-str.repeat(2)重复两次  
+str.repeat(2)重复两次
+***
+Number.isFinite()判断是否为数字
+Number.isNaN()判断是否为NaN
+注意window下和Number的isNaN的区别
+Number.isSafeInteger(Math.pow(2,53)-1);
+Number.MAX_SAFE_INTEGER()
+Number.MIN_SAFE_INTEGER()
+Math.trunc()
+Math.sign()返回符号，正数1,复数-1, 0
+***
+函数名.length为没有默认值的参数个数，只计算值第一个有默认值的参数之前
+函数名.name返回函数名
+***
+##'use strict'
+1.严格模式下，变量必须显式声明
+2.this无法指向window 构造函数必须new
+3.函数不能有重名参数
+4.禁止使用with语句
+5.arguments.callee()
+6....
+##箭头函数
+let fun =(a,b) => {a+b};
+箭头函数下的this指向函数所在作用域
+箭头函数里没有arguments,但可以用扩展运算符...arg
