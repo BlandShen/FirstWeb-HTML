@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <script>
+        // var aa = "123"
+        // function foo(name,age) {
+        //     console.log(this.aa);
+        //     console.log(name);
+        //     console.log(age);
+        // }
+        // foo("lisi",20);
+        // var obj ={
+        //     aa:"abcd"
+        // };
+        // //call改变this的指向
+        // foo.call(obj,"zhangsan","30");
+        // //apply只有两个参数
+        // foo.apply(obj,["zhangsan",30]);
+        // //bind绑定不执行，调用才执行
+        // let foo2 = foo.bind(obj);
+        // foo2("lisi",20);
+
+        function foo(age,school){
+            // let arr = Array.from(arguments);
+            console.log(this.name);
+            console.log(age,school);
+        }
+        Function.prototype.bind2 = function () {
+            console.log(arguments)
+            let obj=Array.from(arguments)[0];
+            let args =Array.from(arguments).slice(1);
+            let _this = this;
+            return function () {
+                let bindArgs = Array.from(arguments);
+                let allArgs = args.concat(bindArgs);
+                _this.call(obj,...allArgs);
+            }
+        };
+        let obj1={
+            name:"zhangsan"
+        };
+        let foo2 = foo.bind2(obj1);
+        foo2("20","heida");
+    </script>
+</body>
+</html>

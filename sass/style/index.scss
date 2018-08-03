@@ -1,0 +1,47 @@
+/*多行注释*/
+//单行注释
+/*!强制注释*/
+$author: bland;
+/*作者#{$author}*/
+$color : red;
+$name : height;
+@mixin mx($w,$h:100px){
+  width: $w;
+  height: $h;
+}
+.div1{
+  color: $color;
+}
+.div2{
+  @include mx(1000px,500px);
+}
+.div3{
+  @extend .div2;
+  background-color: #C2A661;
+}
+.div4{
+  width: 200px+100;
+  #{$name}: (500px)/2;
+}
+.container{
+  .div5{
+    background:{
+      color:$color;
+      repeat: no-repeat;
+      image: url("#");
+    };
+    border:{
+      width: 1px;
+      color: #C2A661;
+    }
+  }
+  &:hover{
+    color: yellow;
+  }
+  &-content1{
+    font-size: 14px;
+  }
+  &-content2{
+    font-weight: bold;
+  }
+}

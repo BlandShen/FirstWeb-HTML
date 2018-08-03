@@ -1,0 +1,40 @@
+@charset "UTF-8";
+/*多行注释*/
+/*!强制注释*/
+/*作者bland*/
+.div1 {
+  color: red;
+}
+
+.div2, .div3 {
+  width: 1000px;
+  height: 500px;
+}
+
+.div3 {
+  background-color: #C2A661;
+}
+
+.div4 {
+  width: 300px;
+  height: 250px;
+}
+
+.container .div5 {
+  background-color: red;
+  background-repeat: no-repeat;
+  background-image: url("#");
+  border-width: 1px;
+  border-color: #C2A661;
+}
+.container:hover {
+  color: yellow;
+}
+.container-content1 {
+  font-size: 14px;
+}
+.container-content2 {
+  font-weight: bold;
+}
+
+/*# sourceMappingURL=index.css.map */

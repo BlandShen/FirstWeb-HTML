@@ -1,0 +1,1 @@
+export let aaaa = 10;
