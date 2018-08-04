@@ -57,7 +57,7 @@ map-remove($m,light);移除
 color: foo(0);
 ```
 ### 循环
-for 适用于数字循环  
+for 适用于数字循环
 through包含5,to不包含5
 ```
 @for $var from 1 to 5{
