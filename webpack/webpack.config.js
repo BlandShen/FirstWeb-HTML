@@ -1,10 +1,13 @@
+const entry = require("./webpack_config/webpack_config");
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const glob = require('glob');
 const PurifyCSSPlugin = require('purifycss-webpack');
+const webpack = require("webpack");
+const CopyPlugin = require("copy-webpack-plugin");
 module.exports =  {
-    entry: './src/index.js',
+    entry: entry,
     output:{
         filename:'bundle.js',
         path: path.resolve(__dirname,'dist')
@@ -58,6 +61,14 @@ module.exports =  {
         ]
     },
     plugins:[
+        new webpack.BannerPlugin("NEFU"),
+        new webpack.ProvidePlugin({
+            $:'jquery'
+        }),
+        new CopyPlugin([{
+            from:__dirname+'/src/public',
+            to:'./public'
+        }]),
         new ExtractTextPlugin("./css/main.css"),
         new HtmlWebpackPlugin({
             title:"fellow23",

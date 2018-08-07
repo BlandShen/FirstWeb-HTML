@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div id="app">
+        <ul>
+            <li v-for="(items,index) in arr">
+                {{index}}:{{items}}
+            </li>
+        </ul>
+        <ul>
+            <li v-for="(items,key,index) in obj">
+                {{index}}-{{key}}:{{items}}
+            </li>
+        </ul>
+        <ul>
+            <!--<li v-for="(items,index) in objArr">-->
+                <!--{{items.name}}-{{items.age}}-{{items.school}}-->
+            <!--</li>-->
+            <li v-for="items in objArr">
+                <span v-for="item in items">
+                    {{item}}
+                </span>
+            </li>
+        </ul>
+        <div>{{sortObj}}</div>
+    </div>
+    <script src="vue.js"></script>
+    <script>
+        let vm = new Vue({
+            el:"#app",
+            data:{
+                num:10,
+                arr:[1,2,3,4,5,6],
+                obj:{
+                    name:"xiaoming",
+                    age:23,
+                    school:"linda"
+                },
+                objArr:[
+                    {
+                        name:"xiaoming",
+                        age:12,
+                        school:"linda"
+                    },
+                    {
+                        name:"xiaohong",
+                        age:14,
+                        school:"heida"
+                    },
+                    {
+                        name:"xiaozhang",
+                        age:34,
+                        school:"ligong"
+                    }
+                ]
+            },
+            computed:{
+                sortObj(){
+                    this.objArr.sort(function (a,b) {
+                        return b.age -a.age;//降序
+                    })
+                }
+            }
+        })
+    </script>
+</body>
+</html>

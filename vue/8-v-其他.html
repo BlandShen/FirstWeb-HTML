@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        [v-cloak]{
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <span v-pre>{{num}}</span>
+        <span v-cloak>{{num}}</span>
+        <span v-once>{{num}}</span>
+    </div>
+    <script src="vue.js"></script>
+    <script>
+        new Vue({
+            el:"#app",
+            data:{
+                num:"hello world",
+            }
+        })
+    </script>
+</body>
+</html>

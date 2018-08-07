@@ -5,3 +5,4 @@ let a= 10;
 let foo=(name,age)=>{
     let aaa=name;
 }
+$("body").css("background","blue");
