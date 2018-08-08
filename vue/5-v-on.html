@@ -18,7 +18,7 @@
 </head>
 <body>
 <div id="app">
-    <input type="button" @click="test(2,$event)" value="add">
+    <input type="button" v-on:click="test(2,$event)" value="add">
     <div>{{num}}</div>
     <div @click.once="div1($event)" class="div1">
         <div @click.stop="div2($event)" class="div2"></div>

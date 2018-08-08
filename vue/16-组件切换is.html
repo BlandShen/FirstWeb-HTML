@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <div :is="whichComponent"></div>
+</div>
+<script src="vue.js"></script>
+<script>
+    new Vue({
+        el: '#app',
+        data: {
+            whichComponent: 'component2'
+        },
+        components: {
+            component1: {
+                template: '<h1>组件：component1</h1>'
+            },
+            component2: {
+                template: '<h1>组件：component2</h1>'
+            },
+            component3: {
+                template: '<h1>组件：component3</h1>'
+            }
+        }
+    });
+</script>
+</body>
+</html>

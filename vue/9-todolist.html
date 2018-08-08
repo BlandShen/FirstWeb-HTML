@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <style>
+        table{
+            text-align: center;
+        }
+        table .close{
+            background-color: darkorange;
+            color:#fff;
+            width: 20px;
+            height: 20px;
+        }
+        .active{
+            background-color: #aaa;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+       <div class="content">
+           <h1 style="text-align: center;">todolist</h1>
+           <div class="row">
+               <div style="margin: 0 auto;">
+                   <input type="text" placeholder="请输入关键字" v-model="searchName">
+                   <button type="button" class="btn btn-outline-success" v-on:click="search()">搜索</button>
+               </div>
+           </div>
+           <div class="row">
+               <div style="margin: 0 auto;">
+                   <span>商品名称</span>
+                   <input type="text" placeholder="请输入名称" v-model="obj.name">
+                   <span>商品价格</span>
+                   <input type="text" placeholder="0" v-model.number="obj.price">
+                   <button type="button" class="btn btn-outline-success" v-on:click="add()">增加</button>
+               </div>
+           </div>
+           <table class="table">
+               <caption>List of users</caption>
+               <thead>
+               <tr>
+                   <th scope="col">选择</th>
+                   <th scope="col">商品名称</th>
+                   <th scope="col">商品价格</th>
+                   <th scope="col">删除</th>
+               </tr>
+               </thead>
+               <tbody>
+               <tr v-bind:class="{active:cbBool[index]}" v-for="(items,index) in arr":key="index" v-on:click="choose(index)">
+                   <th scope="row"><input type="checkbox" name="cbChoice" v-bind:value="index" v-model="cbChoice"></th>
+                   <td>{{items.name}}</td>
+                   <td>{{items.price}}</td>
+                   <td>
+                       <button type="button" class="close" aria-label="Close" v-on:click.stop="del(index,$event)">
+                           <span aria-hidden="true">&times;</span>
+                       </button>
+                   </td>
+               </tr>
+               <tr>
+                   <th scope="row"><button type="button" class="btn btn-danger" v-on:click="del2()">删除选中</button></th>
+                   <td colspan="3">总价：{{calculate}}元</td>
+               </tr>
+               </tbody>
+           </table>
+       </div>
+    </div>
+    <script src="vue.js"></script>
+    <!--<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>-->
+    <!--<script src="https://cdn.bootcss.com/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>-->
+    <!--<script src="https://cdn.bootcss.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>-->
+    <script>
+        new Vue({
+            el:"#app",
+            data:{
+                sum:0,
+                searchName:"",
+                cbChoice:[],
+                cbBool:[],
+                obj:{
+                    name:"",
+                    price:0
+                },
+                arr:[
+                    {
+                        name:"衣服",
+                        price:123,
+                    },
+                    {
+                        name:"鞋子",
+                        price:456,
+                    }
+                ]
+            },
+            methods:{
+                choose(id){
+                    if(this.cbChoice.includes(id)){
+                        this.cbChoice.splice(this.cbChoice.indexOf(id),1);
+                    }else{
+                        this.cbChoice.push(id);
+                    }
+                    for(var i=0;i<this.arr.length;i++){
+                        this.cbBool[i] = false;
+                    }
+                    for(var i=0;i<this.cbChoice.length;i++){
+                        this.cbBool[this.cbChoice[i]] = true;
+                    }
+                },
+                search(){
+                    console.log("search");
+                    this.arr =this.arr.filter(item =>{
+                        if(item.name.indexOf(this.searchName)>=0)
+                            return true;
+                    });
+                    this.searchName ="";
+                },
+                add(){
+                    console.log("add");
+                    var obj1={
+                        name:this.obj.name,
+                        price:this.obj.price
+                    };
+                    this.arr.push(obj1);
+                },
+                del(id,e){
+                    this.arr.splice(id,1);
+                    this.cbChoice=[];
+                    this.cbBool=[];
+                    for(var i=0;i<this.arr.length;i++){
+                        this.cbBool[i] = false;
+                    }
+                    e.stopPropagation();
+                },
+                del2(){
+                    for(var i=0;i<this.cbChoice.length;i++){
+                        this.arr.splice(this.cbChoice[i],1);
+                    }
+                    this.cbChoice=[];
+                    this.cbBool=[];
+                    for(var i=0;i<this.arr.length;i++){
+                        this.cbBool[i] = false;
+                    }
+                }
+            },
+            computed:{
+                calculate(){
+                    this.sum = 0;
+                    for(var i=0;i<this.cbChoice.length;i++){
+                        this.sum += this.arr[this.cbChoice[i]].price;
+                        console.log(this.sum);
+                    }
+                    return this.sum;
+                }
+            }
+        })
+    </script>
+</body>
+</html>
