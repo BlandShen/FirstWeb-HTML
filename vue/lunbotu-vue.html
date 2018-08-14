@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body{
+            background-color: black;
+        }
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        .container{
+            width: 400px;
+            height: 200px;
+            margin: 0 auto;
+            background-color: black;
+            border-radius: 10px;
+            border: 5px solid white;
+            overflow: hidden;
+            position: relative;
+        }
+        .container img{
+            width: 400px;
+            height: 200px;
+        }
+        .clearfix:after{
+            content: "";
+            display: block;
+            clear: both;
+        }
+        .btn-l li, .btn-r li{
+            float: left;
+            list-style: none;
+            text-align: center;
+            line-height: 20px;
+            margin-left: 5px;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background-color: black;
+            color: white;
+        }
+        .btn-l{
+            position: absolute;
+            left:10px;
+            bottom: 10px;
+        }
+        .btn-r{
+            position: absolute;
+            right: 20px;
+            bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <lunbotu v-bind:srinner="sr">
+
+        </lunbotu>
+    </div>
+    <template id="con">
+        <div class="container">
+            <img v-bind:src="srinner" alt="">
+            <div class="btn-l clearfix">
+                <ul>
+                    <!--<li v-on:click="left">&lt</li>-->
+                    <!--<li v-on:click="right">&gt</li>-->
+                </ul>
+            </div>
+            <div class="btn-r clearfix">
+                <ul>
+                    <li>1</li>
+                    <li>2</li>
+                    <li>3</li>
+                    <li>4</li>
+                    <li>5</li>
+                </ul>
+            </div>
+        </div>
+    </template>
+    <script src="vue.js"></script>
+    <script>
+        Vue.component('lunbotu',{
+            template:"#con",
+            props:['srinner']
+        });
+        new Vue({
+            el:"#app",
+            data:{
+                sr:'../image/1.jpg',
+                index:1,
+            },
+            methods:{
+                change(){
+                    if(this.index == 6){
+                        this.index = 1;
+                    }
+                    // console.log(this.index);
+                    this.sr = '../image/'+this.index+'.jpg';
+                    // console.log(this.sr);
+                    this.index++;
+                },
+                left(){
+                    this.index--;
+                },
+                right(){
+                    this.index++;
+                }
+            },
+            computed:{
+
+            },
+            mounted(){
+                this.change();
+                setInterval(this.change,4000);
+            }
+        })
+    </script>
+</body>
+</html>

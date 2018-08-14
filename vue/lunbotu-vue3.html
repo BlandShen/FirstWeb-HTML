@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        body{
+            background-color: black;
+        }
+        .box{
+            border: 5px solid white;
+            border-radius: 10px;
+            width: 400px;
+            height: 200px;
+            margin:100px auto;
+            position: relative;
+            overflow: hidden;
+        }
+        .img-bar li{
+            list-style: none;
+            position: absolute;
+            top: 0;
+        }
+        .img-bar li img{
+            width: 400px;
+            height: 200px;
+        }
+        .btn-bar{
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+        }
+        .btn-bar li{
+            width: 20px;
+            height: 20px;
+            background: #F90;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 20px;
+            color: #fff;
+            margin-left: 5px;
+            list-style: none;
+            float: left;
+        }
+        .btn-bar .active{
+            background: red;
+        }
+        .slide-enter{
+            transform: translateX(100%);
+        }
+        .slide-enter-active {
+            transition: all 1s ease;
+        }
+        .slide-enter-to{
+            transform: translateX(0);
+        }
+        .slide-leave{
+            transform: translateX(0);
+        }
+        .slide-leave-active {
+            transition: all 1s ease;
+        }
+        .slide-leave-to {
+            transform: translateX(-100%);
+        }
+    </style>
+</head>
+<body>
+<div id="app">
+    <div class="box" v-on:mouseover="stop" v-on:mouseout="play">
+        <transition-group name="slide" class="img-bar" tag="ul">
+                <!--v-on:before-enter="beforeEnter"-->
+                <!--v-on:enter="enter"-->
+                <!--v-on:after-enter="afterEnter"-->
+                <!--v-on:enter-cancelled="enterCancelled"-->
+
+                <!--v-on:before-leave="beforeLeave"-->
+                <!--v-on:leave="leave"-->
+                <!--v-on:after-leave="afterLeave"-->
+                <!--v-on:leave-cancelled="leaveCancelled"-->
+                <li v-show="index == nowIndex" v-for="(item,index) in imgList" v-bind:key="index+'il'">
+                    <img :src="'../image/'+item+'.jpg'" alt="">
+                </li>
+        </transition-group>
+        <ul class="btn-bar">
+            <li v-on:mouseover="change(index)" v-for="(item,index) in imgList" v-bind:key='index+"bl"'>{{index+1}}</li>
+        </ul>
+    </div>
+</div>
+<script src="vue.js"></script>
+<script>
+    new Vue({
+        el:'#app',
+        data:{
+            nowIndex:0,
+            isRun:true,
+            timer:null,
+            imgList:[
+                '1',
+                '2',
+                '3',
+                '4',
+                '5',
+            ]
+        },
+        mounted() {
+            this.play()
+        },
+        methods:{
+            change(index){
+                // console.log(this.nowIndex);
+                if(this.isRun == true){
+                    this.nowIndex = index;
+                }
+                this.isRun =false;
+                console.log(this.isRun);
+                setTimeout(()=>{
+                    this.isRun =true;
+                },1000)
+            },
+            stop(){
+                clearInterval(this.timer);
+            },
+            play(){
+                this.timer=setInterval(()=>{
+                    if(this.nowIndex == this.imgList.length-1){
+                        this.nowIndex = 0;
+                    }else{
+                        this.nowIndex++
+                    }
+                    console.log(this.nowIndex);
+                },2000)
+            }
+            // // --------
+            // // 进入中
+            // // --------
+            //
+            // beforeEnter: function (el) {
+            //     // ..
+            // },
+            // // 此回调函数是可选项的设置
+            // // 与 CSS 结合时使用
+            // enter: function (el, done) {
+            //     // ...
+            //     done()
+            // },
+            // afterEnter: function (el) {
+            //     // ...
+            // },
+            // enterCancelled: function (el) {
+            //     // ...
+            // },
+            //
+            // // --------
+            // // 离开时
+            // // --------
+            //
+            // beforeLeave: function (el) {
+            //     // ...
+            // },
+            // // 此回调函数是可选项的设置
+            // // 与 CSS 结合时使用
+            // leave: function (el, done) {
+            //     // ...
+            //     done()
+            // },
+            // afterLeave: function (el) {
+            //     // ...
+            // },
+            // // leaveCancelled 只用于 v-show 中
+            // leaveCancelled: function (el) {
+            //     // ...
+            // }
+        }
+    })
+</script>
+</body>
+</html>
