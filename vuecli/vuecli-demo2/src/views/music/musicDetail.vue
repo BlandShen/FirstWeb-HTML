@@ -9,10 +9,13 @@
 </template>
 <script>
     import Aplayer from 'vue-aplayer'
-
+    import axios from 'axios'
     export default {
         created(){
           this.getData()
+        },
+        components: {
+            Aplayer
         },
         data(){
           return {
@@ -25,19 +28,17 @@
                 axios.get("./data/musicdata.json")
                     .then((response)=>{
                         this.dataList = response.data.musicData;
-                        this.isIf = true;
+
                         for(var i=0;i<response.data.musicData.length;i++){
                             this.dataList[i].lrc = location.origin +"/"+ this.dataList[i].lrc;
                         }
+                        this.isIf = true;
                     })
                     .catch((error)=>{
                         console.log("error");
                     })
             }
-        },
-        components: {
-            Aplayer
-        },
+        }
         // props:{
         //     // music:this.dataList[0],
         //     // list:this.dataList,
