@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form action="#">
+    <input type="text" name="useremail" id="userEmail" placeholder="请输入邮箱">
+    <input type="text" name="userurl" id="userUrl" placeholder="请输入网址">
+    <input type="text" name="usernumber" id="userNumber" placeholder="请输入数字">
+    <input type="submit" value="提交">
+</form>
+<script src="jquery-3.3.1.min.js"></script>
+<script>
+
+    // let reg=/c*?/;
+    // let reg1 = new RegExp('c');
+    // let str='cccba';
+    // console.log(str.indexOf('c'));
+    // console.log(reg.test(str));
+    // console.log(reg.exec(str));
+
+    // let reg =/^b|c.+/
+    // let str='bbbddd';
+    // console.log(reg.exec(str));
+
+    // let reg=/(?:\d{2})$/;
+    // let str = '10scd0040';
+    // console.log(reg.exec(str));
+
+    // let reg=/\s+/g;
+    // let str = ' scd  0   0 40';
+    // console.log(str.replace(reg," "));
+
+    // let reg = /(?<aa>\w+).(?<bb>\w+).(?<cc>\w+)/
+    // let str = 'www.baidu.com'
+
+    // let reg = /(?<year>\d{4})(.)(?<date>\d{2})(.)(?<month>\d{2})/
+    // let str = "2018-15-08";
+    // console.log(reg.exec(str));
+    // console.log(str.replace(reg,'$1年$5月$3日'));
+    // let ouserEmail = document.getElementById("userEmail");
+    // let ouserUrl = document.getElementById("userUrl");
+    // let ouserNumber = document.getElementById("userNumber");
+    let regEmail = /([A-Za-z0-9]+|_+)@([A-Za-z0-9]+).com/;
+    let regUrl = /^(www.|https:\/\/|http:\/\/)/;
+    let regNumber = /^\d+&/;
+    let regNumber2 = /\d|Backspace/
+    $('#userEmail').blur( function (){
+        if(regEmail.test(this.value) == false){
+            // console.log("输入的邮件地址格式不正确");
+            alert("输入的邮件地址格式不正确");
+        }
+    });
+    $('#userUrl').blur( function (){
+        if(regUrl.test(this.value) == false){
+            // console.log("输入的网址格式不正确");
+            alert("输入的网址格式不正确");
+        }
+    });
+    // $('#userNumber').blur( function (){
+    //     if(regNumber.test(this.value) == false){
+    //         // console.log("请输入数字");
+    //         alert("请输入数字")
+    //     }
+    // });
+    $('#userNumber').on("keydown",function (e){
+        if(regNumber2.test(e.originalEvent.key) ==false){
+            return false
+        }else{
+            return true
+        }
+    })
+</script>
+</body>
+</html>
