@@ -51,7 +51,7 @@
                 .then((response) =>{
                     this.dataList =this.dataList.concat(response.data.subjects);
                     this.isFinish = true;
-                    // console.log(this.dataList);
+                    console.log(this.dataList);
                 })
                 .catch((error)=> {
                     console.log(error);
