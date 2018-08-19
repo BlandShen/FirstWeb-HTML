@@ -16,11 +16,11 @@
             <div class="grade">
                 <div>{{detailData.rating.average}}</div>
                 <div>
-                    <span>{{detailData.collect_count}}人已看</span>
+                    <span>{{detailData.collect_count}}人已看&nbsp&nbsp</span>
                     <span>{{detailData.comments_count}}人评论</span>
                 </div>
                 <div>
-                    <p>{{detailData.wish_count}}人想看</p>
+                    <span>{{detailData.wish_count}}人想看</span>
                 </div>
             </div>
             <p>{{detailData.summary}}</p>
@@ -77,6 +77,10 @@
     .left{
         flex-grow: 2;
     }
+    .left li{
+        margin-left: .1rem;
+        float: left;
+    }
     .right{
         flex-grow: 1;
     }
@@ -89,9 +93,13 @@
     .grade{
         display: flex;
         flex-direction: row;
+        margin: .2rem .1rem;
     }
     .grade div{
         flex-grow: 1;
+    }
+    .content p{
+        margin: .2rem .2rem;
     }
     .acters{
         margin: .2rem 0;
