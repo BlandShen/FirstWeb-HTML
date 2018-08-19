@@ -27,14 +27,14 @@
         </div>
         <div class="acters">
             <div v-for="(items,index) in detailData.directors" :key="index+'ds'">
-                <img :src="items.avatars.small"/>
+                <img :src="items.avatars.large"/>
                 <span>{{items.name}}</span>
-                <span>导演</span>
+                <span>&nbsp导演</span>
             </div>
             <div v-for="(items,index) in detailData.casts" :key="index+'cas'">
-                <img :src="items.avatars.small"/>
+                <img :src="items.avatars.large"/>
                 <span>{{items.name}}</span>
-                <span>主演</span>
+                <span>&nbsp主演</span>
             </div>
         </div>
     </div>
@@ -62,7 +62,7 @@
 </script>
 <style scoped>
     .container{
-        background-color: rgba(0,0,0,.2);
+        background-color: rgba(0,0,0,.08);
     }
     .clearfix:after{
         content:"";
@@ -85,7 +85,8 @@
         flex-grow: 1;
     }
     .right img{
-        width:80%;
+        height: 179px;
+        /*width:90%;*/
     }
     .content{
         background-color: #fff;
@@ -93,7 +94,7 @@
     .grade{
         display: flex;
         flex-direction: row;
-        margin: .2rem .1rem;
+        margin: .2rem .1rem 0 .1rem;
     }
     .grade div{
         flex-grow: 1;
@@ -106,11 +107,14 @@
         background-color: #fff;
         display: flex;
         flex-direction: row;
+        flex-wrap: wrap;
     }
     .acters div{
-        flex-grow: 1;
+        width: 57px;
+        margin:.1rem;
     }
     .acters div img{
-        width: 100%;
+        height: 80px;
+        /*width: 90%;*/
     }
 </style>
